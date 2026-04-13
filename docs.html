@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Healing Agent Test Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .doc-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .doc-content h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .doc-content h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .doc-content h3 {
+            color: #495057;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .doc-content p, .doc-content li {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .doc-content code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+        }
+        .doc-content pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #667eea;
+        }
+        .doc-content ul, .doc-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="doc-content">
+            <a href="index.html" class="back-link">← Back to Test Page</a>
+            
+            <h1>📚 Healing Agent Test Page Documentation</h1>
+            
+            <h2>Overview</h2>
+            <p>This test page is designed to help QA engineers and automation developers test healing agent functionality. It provides a comprehensive set of UI elements with various locator strategies.</p>
+            
+            <h2>What is a Healing Agent?</h2>
+            <p>A Healing Agent is an AI-powered system that automatically detects and fixes broken UI locators in test automation. When a test fails due to a changed or broken locator, the healing agent attempts to find the element using alternative strategies.</p>
+            
+            <h2>Test Sections</h2>
+            
+            <h3>1. Static Elements</h3>
+            <p>Tests basic locator fallback strategies. These elements have multiple locator options (ID, Class, Text) that can be used for healing.</p>
+            <ul>
+                <li><strong>Login Button:</strong> ID = <code>loginButton</code></li>
+                <li><strong>Sign Up Button:</strong> ID = <code>signupButton</code></li>
+                <li><strong>Submit Button:</strong> ID = <code>submitButton</code></li>
+                <li><strong>Cancel Button:</strong> ID = <code>cancelButton</code></li>
+            </ul>
+            
+            <h3>2. Form Inputs</h3>
+            <p>Tests DOM scoring and similarity matching. These inputs can be found using placeholder text, labels, and structural relationships.</p>
+            
+            <h3>3. Dynamic Content</h3>
+            <p>Tests AI recovery for dynamically generated elements. Click "Generate Dynamic Content" to create new elements with unique IDs.</p>
+            
+            <h3>4. Modal & Overlays</h3>
+            <p>Tests healing in overlay contexts. The modal can be opened and closed, testing z-index and visibility scenarios.</p>
+            
+            <h3>5. Conditional Elements</h3>
+            <p>Tests visibility changes and show/hide scenarios. The toggle button reveals or hides a conditional element.</p>
+            
+            <h3>6. Navigation Links</h3>
+            <p>Tests link locators using href attributes and text content.</p>
+            
+            <h2>How to Use This Page</h2>
+            
+            <h3>For Manual Testing:</h3>
+            <ol>
+                <li>Open the page in your browser</li>
+                <li>Interact with each element to verify functionality</li>
+                <li>Use browser DevTools to inspect element properties</li>
+                <li>Test dynamic content generation</li>
+            </ol>
+            
+            <h3>For Automation Testing:</h3>
+            <ol>
+                <li>Create test scripts targeting elements on this page</li>
+                <li>Intentionally break locators (e.g., change ID values)</li>
+                <li>Run tests with healing agent enabled</li>
+                <li>Verify the healing agent finds elements using alternative strategies</li>
+            </ol>
+            
+            <h2>Element Locator Strategies</h2>
+            <p>Each element supports multiple locator strategies:</p>
+            <ul>
+                <li><strong>ID:</strong> Unique identifier (most reliable)</li>
+                <li><strong>Class:</strong> CSS class names (can match multiple elements)</li>
+                <li><strong>Text:</strong> Visible text content (user-facing)</li>
+                <li><strong>XPath:</strong> DOM path (can be fragile)</li>
+                <li><strong>CSS Selector:</strong> Style-based selection</li>
+            </ul>
+            
+            <h2>Testing Best Practices</h2>
+            <ul>
+                <li>Test one healing level at a time</li>
+                <li>Start with simple scenarios (Level 1 - Static Heuristics)</li>
+                <li>Progress to complex scenarios (Level 3 - AI Recovery)</li>
+                <li>Document healing success rates</li>
+                <li>Monitor performance metrics</li>
+            </ul>
+            
+            <h2>Common Test Scenarios</h2>
+            
+            <h3>Scenario 1: ID Change</h3>
+            <pre><code>Original: id="loginButton"
+Modified: id="brokenLoginButton"
+Expected: Healing finds element using text="Login"</code></pre>
+            
+            <h3>Scenario 2: Class Change</h3>
+            <pre><code>Original: class="auth-btn primary"
+Modified: class="auth-button primary-btn"
+Expected: Healing finds element using ID or text</code></pre>
+            
+            <h3>Scenario 3: Multiple Changes</h3>
+            <pre><code>Original: All locators working
+Modified: All locators changed
+Expected: Healing uses DOM scoring/AI recovery</code></pre>
+            
+            <h2>Browser Compatibility</h2>
+            <p>This page is compatible with:</p>
+            <ul>
+                <li>Chrome 90+</li>
+                <li>Firefox 88+</li>
+                <li>Safari 14+</li>
+                <li>Edge 90+</li>
+            </ul>
+            
+            <h2>GitHub Repository</h2>
+            <p>View the source code and contribute on <a href="https://github.com/yourusername/healing-agent-test-page" target="_blank">GitHub</a>.</p>
+            
+            <h2>License</h2>
+            <p>This project is open source and available under the MIT License.</p>
+            
+            <div style="margin-top: 40px;">
+                <a href="index.html" class="btn">← Back to Test Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
