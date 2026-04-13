@@ -1,4 +1,4 @@
-# 🔧 Healing Agent Test Page
+# 🔧 Healing Agent Test Page 
 
 A comprehensive test page designed for testing AI-powered locator healing in test automation frameworks.
 
