@@ -12,8 +12,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔧 Healing Agent Test Page</h1>
-            <p>Comprehensive test suite for AI-powered locator healing</p>
+            <h1>🔧 Healing Agent & Skill Registry Test Page</h1>
+            <p>Comprehensive test suite for AI-powered locator healing and exception recovery</p>
             <div class="header-links">
                 <a href="https://github.com/yourusername/healing-agent-test-page" target="_blank" class="github-link">
                     <svg height="24" viewBox="0 0 16 16" width="24" fill="currentColor">
@@ -24,117 +24,317 @@
             </div>
         </div>
 
+        <div class="feature-tabs">
+            <button class="tab-btn active" onclick="switchTab('healing')">Healing Agent Tests</button>
+            <button class="tab-btn" onclick="switchTab('skills')">Skill Registry Tests</button>
+        </div>
+
         <div class="content">
             <!-- Information Section -->
             <div class="info-box">
-                <strong>📋 Purpose:</strong> This page contains various UI elements with intentionally breakable locators to test the healing agent's ability to recover from locator failures.
+                <strong>📋 Purpose:</strong> This page contains test scenarios for both Healing Agent (locator recovery) and Skill Registry (exception recovery with AI-powered skills).
             </div>
 
-            <!-- Section 1: Static Elements -->
-            <div class="section">
-                <h2>1. Static Elements (Level 1 - Heuristic Healing)</h2>
-                <div class="test-elements">
+            <!-- Healing Agent Tab -->
+            <div id="healing-tab" class="tab-content active">
+                <!-- Section 1: Static Elements -->
+                <div class="section">
+                    <h2>1. Static Elements (Level 1 - Heuristic Healing)</h2>
+                    <div class="test-elements">
+                        <div class="test-card">
+                            <h3>Login Button for healing agent</h3>
+                            <a href="#" id="loginbutton" class="auth-btn primary" onclick="event.preventDefault(); console.log('Login clicked');">Login</a>
+                            <ul class="element-list">
+                                <li><strong>ID:</strong> differentButton</li>
+                                <li><strong>Class:</strong> auth-btn primary new-button</li>
+                                <li><strong>Text:</strong> sign in</li>
+                            </ul>
+                        </div>
+
+                        <div class="test-card">
+                            <h3>Sign Up Button</h3>
+                            <button id="btn-signup-modern" class="modern-auth-btn secondary-style">login new</button>
+                            <ul class="element-list">
+                                <li><strong>ID:</strong> signupButton</li>
+                                <li><strong>Class:</strong> auth-btn secondary</li>
+                                <li><strong>Text:</strong> Sign Up</li>
+                            </ul>
+                        </div>
+
+                        <div class="test-card">
+                            <h3>Submit Form</h3>
+                            <button id="differentSubmitButton" class="differentSubmitButton">Different Text</button>
+                            <ul class="element-list">
+                                <li><strong>ID:</strong> differentSubmitButton</li>
+                                <li><strong>Class:</strong> form-action-new</li>
+                                <li><strong>Text:</strong> differentSubmitButton</li>
+                            </ul>
+                        </div>
+
+                        <div class="test-card">
+                            <h3>Cancel Button</h3>
+                            <button id="cancelButton" class="form-action cancel">Cancel</button>
+                            <ul class="element-list">
+                                <li><strong>ID:</strong> cancelButton</li>
+                                <li><strong>Class:</strong> form-action cancel</li>
+                                <li><strong>Text:</strong> Cancel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Form Inputs -->
+                <div class="section">
+                    <h2>2. Form Inputs (Level 2 - DOM Scoring)</h2>
                     <div class="test-card">
-                        <h3>Login Button</h3>
-                        <button id="loginButton" class="auth-btn primary">Login</button>
-                        <ul class="element-list">
-                            <li><strong>ID:</strong> loginButton</li>
-                            <li><strong>Class:</strong> auth-btn primary</li>
-                            <li><strong>Text:</strong> Login</li>
+                        <h3>User Information Form</h3>
+                        <input type="text" id="usernameInput" placeholder="Username" class="form-input" />
+                        <input type="email" id="emailInput" placeholder="Email" class="form-input" />
+                        <input type="text" id="phoneInput" placeholder="Phone Number" class="form-input" />
+                        <textarea id="commentsTextarea" placeholder="Comments" class="form-input" rows="3"></textarea>
+                        <button id="formSubmitBtn">Submit Form</button>
+                    </div>
+                </div>
+
+                <!-- Section 3: Dynamic Content -->
+                <div class="section">
+                    <h2>3. Dynamic Content (Level 3 - AI Recovery)</h2>
+                    <div class="dynamic-section">
+                        <h3>Dynamic Element Generator</h3>
+                        <button id="generateDynamicBtn" onclick="generateDynamicContent()">Generate Dynamic Content</button>
+                        <div id="dynamicContent"></div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Modal & Overlays -->
+                <div class="section">
+                    <h2>4. Modal & Overlays</h2>
+                    <div class="test-card">
+                        <h3>Modal Trigger</h3>
+                        <button id="openModalBtn" class="modal-trigger" onclick="openModal()">Open Modal</button>
+                    </div>
+                </div>
+
+                <!-- Section 5: Conditional Elements -->
+                <div class="section">
+                    <h2>5. Conditional Elements (Show/Hide)</h2>
+                    <div class="test-card">
+                        <button id="toggleBtn" onclick="toggleElement()">Toggle Element</button>
+                        <div id="conditionalElement" class="hidden-element" style="margin-top: 15px; padding: 15px; background: #d4edda; border-radius: 8px;">
+                            <strong>Hidden Element Revealed!</strong>
+                            <p>This element can be shown or hidden dynamically.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Navigation Links -->
+                <div class="section">
+                    <h2>6. Navigation Links</h2>
+                    <div class="test-elements">
+                        <div class="test-card">
+                            <a href="#home" id="homeLink" class="nav-link">Home</a>
+                        </div>
+                        <div class="test-card">
+                            <a href="#about" id="aboutLink" class="nav-link">About</a>
+                        </div>
+                        <div class="test-card">
+                            <a href="#contact" id="contactLink" class="nav-link">Contact</a>
+                        </div>
+                        <div class="test-card">
+                            <a href="#settings" id="settingsLink" class="nav-link">Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Registry Tab -->
+            <div id="skills-tab" class="tab-content">
+                <div class="info-box warning-box">
+                    <strong>⚠️ Skill Registry Testing:</strong> These tests simulate various exception scenarios that the Skill Registry should handle automatically during test execution.
+                </div>
+
+                <div class="section">
+                    <h2>Test Instructions</h2>
+                    <div class="test-card">
+                        <h3>How to Test Skill Registry</h3>
+                        <ol class="instruction-list">
+                            <li><strong>Setup:</strong> Enable <code>useSkillRegistry: true</code> in your project configuration</li>
+                            <li><strong>Create Skills:</strong> Use the API to create skills for your scenario with matching trigger conditions</li>
+                            <li><strong>Run Test:</strong> Execute your test scenario through Automator</li>
+                            <li><strong>Trigger Interruption:</strong> Use the "Trigger" buttons on this page to simulate failures</li>
+                            <li><strong>Observe:</strong> Skill Registry should detect, execute skill, and retry the step</li>
+                            <li><strong>Verify:</strong> Check logs for skill execution details and MongoDB for execution records</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- All the same test sections but with skill-specific info -->
+                <div class="section">
+                    <h2>🎯 Test 1: Ad Popup Interruption</h2>
+                    <div class="skill-test-scenario">
+                        <div class="scenario-info">
+                            <h3>Scenario Description</h3>
+                            <p>Test clicks the "Continue" button, but an ad popup blocks the click interaction.</p>
+                            <div class="skill-definition">
+                                <strong>Expected Exception:</strong> <code>ElementClickInterceptedException</code><br>
+                                <strong>Skill Trigger:</strong> "When an unexpected ad popup appears on screen"<br>
+                                <strong>Skill Action:</strong> "Click on the close (X) icon"<br>
+                                <strong>Expected Outcome:</strong> Skill dismisses popup, step retries and succeeds
+                            </div>
+                        </div>
+                        <div class="test-controls">
+                            <button id="continueButton2" class="primary-btn" data-test-id="continue-btn-skill">Continue to Next Step</button>
+                            <button onclick="triggerAdPopup()" class="trigger-btn">Trigger Ad Popup</button>
+                            <div id="adPopupStatus2" class="status"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🍪 Test 2: Cookie Consent Banner</h2>
+                    <div class="skill-test-scenario">
+                        <div class="scenario-info">
+                            <h3>Scenario Description</h3>
+                            <p>Test clicks "Accept Terms", but cookie banner blocks the button.</p>
+                            <div class="skill-definition">
+                                <strong>Expected Exception:</strong> <code>ElementClickInterceptedException</code><br>
+                                <strong>Skill Trigger:</strong> "When a cookie consent banner is blocking interactions"<br>
+                                <strong>Skill Action:</strong> "Click on the Accept All button"<br>
+                                <strong>Expected Outcome:</strong> Skill accepts cookies, step retries and succeeds
+                            </div>
+                        </div>
+                        <div class="test-controls">
+                            <button id="acceptTermsButton2" class="primary-btn" data-test-id="accept-terms-skill">Accept Terms</button>
+                            <button onclick="triggerCookieBanner()" class="trigger-btn">Trigger Cookie Banner</button>
+                            <div id="cookieBannerStatus2" class="status"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📧 Test 3: Newsletter Subscription Popup</h2>
+                    <div class="skill-test-scenario">
+                        <div class="scenario-info">
+                            <h3>Scenario Description</h3>
+                            <p>Test submits a form, but newsletter popup blocks submit.</p>
+                            <div class="skill-definition">
+                                <strong>Expected Exception:</strong> <code>ElementClickInterceptedException</code><br>
+                                <strong>Skill Trigger:</strong> "When newsletter subscription popup appears"<br>
+                                <strong>Skill Action:</strong> "Click on the No Thanks button"<br>
+                                <strong>Expected Outcome:</strong> Skill dismisses newsletter, step retries and succeeds
+                            </div>
+                        </div>
+                        <div class="test-controls">
+                            <button id="submitFormButton2" class="primary-btn" data-test-id="submit-form-skill">Submit Form</button>
+                            <button onclick="triggerNewsletterPopup()" class="trigger-btn">Trigger Newsletter Popup</button>
+                            <div id="newsletterStatus2" class="status"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>👁️ Test 4: Element Not Visible (Scroll Required)</h2>
+                    <div class="skill-test-scenario">
+                        <div class="scenario-info">
+                            <h3>Scenario Description</h3>
+                            <p>Target button is outside viewport, causing ElementNotInteractableException.</p>
+                            <div class="skill-definition">
+                                <strong>Expected Exception:</strong> <code>ElementNotInteractableException</code><br>
+                                <strong>Skill Trigger:</strong> "When target element is not visible in viewport"<br>
+                                <strong>Skill Action:</strong> "Scroll the target element into center of viewport"<br>
+                                <strong>Expected Outcome:</strong> Skill scrolls to element, step retries and succeeds
+                            </div>
+                        </div>
+                        <div class="test-controls">
+                            <button onclick="scrollToHiddenElement()" class="trigger-btn">Scroll to Hidden Element</button>
+                            <p class="helper-text">Target button is 1500px below (out of viewport)</p>
+                            <div id="scrollStatus2" class="status"></div>
+                        </div>
+                        <div style="height: 1500px; background: linear-gradient(to bottom, #f8f9fa, #e9ecef); margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #6c757d;">
+                            <p>↓ Hidden button is below ↓</p>
+                        </div>
+                        <button id="hiddenButton2" class="primary-btn" data-test-id="hidden-btn-skill" style="margin-bottom: 50px;">Hidden Button (Out of Viewport)</button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>⏳ Test 5: Loading Spinner Blocker</h2>
+                    <div class="skill-test-scenario">
+                        <div class="scenario-info">
+                            <h3>Scenario Description</h3>
+                            <p>Loading spinner appears and blocks interaction, causing timeout.</p>
+                            <div class="skill-definition">
+                                <strong>Expected Exception:</strong> <code>TimeoutException</code> or <code>ElementClickInterceptedException</code><br>
+                                <strong>Skill Trigger:</strong> "When loading spinner is blocking interactions"<br>
+                                <strong>Skill Action:</strong> "Wait for loading spinner to disappear"<br>
+                                <strong>Expected Outcome:</strong> Skill waits for spinner, step retries and succeeds
+                            </div>
+                        </div>
+                        <div class="test-controls">
+                            <button id="processDataButton2" class="primary-btn" data-test-id="process-data-skill">Process Data</button>
+                            <button onclick="triggerLoadingSpinner()" class="trigger-btn">Trigger Loading Spinner</button>
+                            <div id="loadingStatus2" class="status"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🔄 Test 6: Stale Element After DOM Update</h2>
+                    <div class="skill-test-scenario">
+                        <div class="scenario-info">
+                            <h3>Scenario Description</h3>
+                            <p>Element reference becomes stale after React/Vue-style re-render.</p>
+                            <div class="skill-definition">
+                                <strong>Expected Exception:</strong> <code>StaleElementReferenceException</code><br>
+                                <strong>Skill Trigger:</strong> "When element reference becomes stale after DOM update"<br>
+                                <strong>Skill Action:</strong> "Wait 2 seconds for DOM to stabilize"<br>
+                                <strong>Expected Outcome:</strong> Skill waits, element re-located, step succeeds
+                            </div>
+                        </div>
+                        <div class="test-controls">
+                            <div id="staleContainer">
+                                <button id="staleTestButton2" class="primary-btn" data-test-id="stale-btn-skill">Target Button</button>
+                            </div>
+                            <button onclick="causeStaleElement()" class="trigger-btn">Cause DOM Re-render</button>
+                            <div id="staleStatus2" class="status"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🪟 Test 7: Multiple Overlapping Popups</h2>
+                    <div class="skill-test-scenario">
+                        <div class="scenario-info">
+                            <h3>Scenario Description</h3>
+                            <p>Three popups appear in sequence: Cookie → Newsletter → Promo</p>
+                            <div class="skill-definition">
+                                <strong>Expected Exception:</strong> <code>ElementClickInterceptedException</code> (multiple times)<br>
+                                <strong>Skill Trigger:</strong> "When any popup or modal is blocking interactions"<br>
+                                <strong>Skill Action:</strong> "Click close button or dismiss link"<br>
+                                <strong>Expected Outcome:</strong> Skill dismisses all popups, step eventually succeeds
+                            </div>
+                        </div>
+                        <div class="test-controls">
+                            <button id="finalActionButton2" class="primary-btn" data-test-id="final-action-skill">Complete Action</button>
+                            <button onclick="triggerMultiplePopups()" class="trigger-btn">Trigger Sequential Popups</button>
+                            <div id="multiPopupStatus2" class="status"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📊 Test Results Summary</h2>
+                    <div class="test-card">
+                        <h3>Expected Skill Registry Behavior</h3>
+                        <ul class="result-list">
+                            <li>✅ <strong>Test 1-3:</strong> Popups dismissed automatically</li>
+                            <li>✅ <strong>Test 4:</strong> Element scrolled into view</li>
+                            <li>✅ <strong>Test 5:</strong> Waited for spinner to disappear</li>
+                            <li>✅ <strong>Test 6:</strong> Waited for DOM stabilization</li>
+                            <li>✅ <strong>Test 7:</strong> All popups dismissed in sequence</li>
+                            <li>📝 <strong>Logs:</strong> Check core engine logs for [SkillRegistry] entries</li>
+                            <li>💾 <strong>Database:</strong> Check MongoDB skillexecutions collection</li>
                         </ul>
-                    </div>
-
-                    <div class="test-card">
-                        <h3>Sign Up Button</h3>
-                        <button id="signupButton" class="auth-btn secondary">Sign Up</button>
-                        <ul class="element-list">
-                            <li><strong>ID:</strong> signupButton</li>
-                            <li><strong>Class:</strong> auth-btn secondary</li>
-                            <li><strong>Text:</strong> Sign Up</li>
-                        </ul>
-                    </div>
-
-                    <div class="test-card">
-                        <h3>Submit Form</h3>
-                        <button id="submitButton" class="form-action">Submit</button>
-                        <ul class="element-list">
-                            <li><strong>ID:</strong> submitButton</li>
-                            <li><strong>Class:</strong> form-action</li>
-                            <li><strong>Text:</strong> Submit</li>
-                        </ul>
-                    </div>
-
-                    <div class="test-card">
-                        <h3>Cancel Button</h3>
-                        <button id="cancelButton" class="form-action cancel">Cancel</button>
-                        <ul class="element-list">
-                            <li><strong>ID:</strong> cancelButton</li>
-                            <li><strong>Class:</strong> form-action cancel</li>
-                            <li><strong>Text:</strong> Cancel</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 2: Form Inputs -->
-            <div class="section">
-                <h2>2. Form Inputs (Level 2 - DOM Scoring)</h2>
-                <div class="test-card">
-                    <h3>User Information Form</h3>
-                    <input type="text" id="usernameInput" placeholder="Username" class="form-input" />
-                    <input type="email" id="emailInput" placeholder="Email" class="form-input" />
-                    <input type="text" id="phoneInput" placeholder="Phone Number" class="form-input" />
-                    <textarea id="commentsTextarea" placeholder="Comments" class="form-input" rows="3"></textarea>
-                    <button id="formSubmitBtn">Submit Form</button>
-                </div>
-            </div>
-
-            <!-- Section 3: Dynamic Content -->
-            <div class="section">
-                <h2>3. Dynamic Content (Level 3 - AI Recovery)</h2>
-                <div class="dynamic-section">
-                    <h3>Dynamic Element Generator</h3>
-                    <button id="generateDynamicBtn" onclick="generateDynamicContent()">Generate Dynamic Content</button>
-                    <div id="dynamicContent"></div>
-                </div>
-            </div>
-
-            <!-- Section 4: Modal & Overlays -->
-            <div class="section">
-                <h2>4. Modal & Overlays</h2>
-                <div class="test-card">
-                    <h3>Modal Trigger</h3>
-                    <button id="openModalBtn" class="modal-trigger" onclick="openModal()">Open Modal</button>
-                </div>
-            </div>
-
-            <!-- Section 5: Conditional Elements -->
-            <div class="section">
-                <h2>5. Conditional Elements (Show/Hide)</h2>
-                <div class="test-card">
-                    <button id="toggleBtn" onclick="toggleElement()">Toggle Element</button>
-                    <div id="conditionalElement" class="hidden-element" style="margin-top: 15px; padding: 15px; background: #d4edda; border-radius: 8px;">
-                        <strong>Hidden Element Revealed!</strong>
-                        <p>This element can be shown or hidden dynamically.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 6: Navigation Links -->
-            <div class="section">
-                <h2>6. Navigation Links</h2>
-                <div class="test-elements">
-                    <div class="test-card">
-                        <a href="#home" id="homeLink" class="nav-link">Home</a>
-                    </div>
-                    <div class="test-card">
-                        <a href="#about" id="aboutLink" class="nav-link">About</a>
-                    </div>
-                    <div class="test-card">
-                        <a href="#contact" id="contactLink" class="nav-link">Contact</a>
-                    </div>
-                    <div class="test-card">
-                        <a href="#settings" id="settingsLink" class="nav-link">Settings</a>
                     </div>
                 </div>
             </div>
@@ -155,6 +355,54 @@
             <h3>Modal Dialog</h3>
             <p>This is a modal that appears on top of the page.</p>
             <button id="closeModalBtn" class="close-modal" onclick="closeModal()">Close Modal</button>
+        </div>
+    </div>
+
+    <!-- Ad Popup Overlay -->
+    <div id="adPopup" class="popup-overlay">
+        <div class="popup-content ad-popup">
+            <h3>🎯 Advertisement</h3>
+            <p>Special Offer! Get 50% off on premium features!</p>
+            <button id="adCloseBtn" class="close-btn" onclick="closeAdPopup()">✕</button>
+            <button class="popup-action-btn">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>🍪 We use cookies to enhance your experience. By continuing, you accept our cookie policy.</p>
+            <div class="cookie-buttons">
+                <button id="acceptAllCookies" class="accept-btn" onclick="closeCookieBanner()">Accept All</button>
+                <button id="rejectCookies" class="reject-btn" onclick="closeCookieBanner()">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Popup -->
+    <div id="newsletterPopup" class="popup-overlay">
+        <div class="popup-content newsletter-popup">
+            <h3>📧 Subscribe to Our Newsletter</h3>
+            <p>Get the latest updates and exclusive offers!</p>
+            <input type="email" placeholder="Enter your email" class="popup-input" />
+            <button id="subscribeBtn" class="popup-action-btn">Subscribe</button>
+            <button id="noThanksBtn" class="close-btn" onclick="closeNewsletterPopup()">No Thanks</button>
+        </div>
+    </div>
+
+    <!-- Loading Spinner Overlay -->
+    <div id="loadingSpinner" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Promo Popup (for multiple popups test) -->
+    <div id="promoPopup" class="popup-overlay">
+        <div class="popup-content promo-popup">
+            <h3>🎉 Limited Time Offer!</h3>
+            <p>Sign up now and get 30 days free trial!</p>
+            <button id="promoCloseBtn" class="close-btn" onclick="closePromoPopup()">✕</button>
+            <button class="popup-action-btn">Claim Offer</button>
         </div>
     </div>
 
